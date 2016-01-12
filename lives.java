@@ -1,26 +1,34 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.Color;
+import java.awt.*;
 /**
- * Write a description of class lives here.
+ * Write a description of class bosshp here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class lives extends Actor
-{   
-    public void Text(String text)
-    {
-        updateImage(text);
+public class lives extends Actor {
+    
+    private GreenfootImage image = new GreenfootImage(129, 20);
+    
+    public lives() {
+        setImage(image);
+        draw();
     }
- 
-    public void updateImage(String text)
-    {
-        setImage(new GreenfootImage(text, 18, Color.black, new Color(0, 0, 0, 0)));
+    
+    public void act() {
+        draw();
     }
-    public void act() 
-    {
-        
-    }    
-}
+    
+    public void draw() {
+        image.clear();
+        //set image background
+        if (lifeUp.life < 0) {
+            lifeUp.life = 0;
+        }
+        if (lifeUp.life > 0 ) {
+            image.setColor(new Color(255, 0, 0));
+            image.fillRect(0, 0, lifeUp.life*10, 20);
+        }
+    }
 
-//WAAR WAS IK GEBLEVEN: HOE LAAT JE ER LEVENS BIJ KOMEN
+}

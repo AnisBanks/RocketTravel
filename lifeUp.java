@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class lifeUp extends Actor
 {   
-    int life = 3;
+    public static int life = 3;
     
     public void act() 
     {

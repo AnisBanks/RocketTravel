@@ -28,7 +28,8 @@ public class space extends World
         super(1200, 600, 1); 
         //TOP BAR WAAR JE HET AANTAL LEVENS EN TIJD KUNT ZIEN
         addObject(new topBar(), 599, 25);
-        addObject(new lives(), 134, 28);
+        addObject(new lives(), 185, 30);
+        addObject(new Timer(), 450, 40);
         addObject(new pauseButton(), 1169, 28);
         //RAKET SPAWNEN
         addObject(new raket(), raketX, raketY);
@@ -37,7 +38,10 @@ public class space extends World
         addObject(new enemy1(), enemy1X, enemy1Y);
         addObject(new speedUp(), getHeight()/2, 200);
  
-        
+        setPaintOrder(
+            lives.class, Timer.class, topBar.class, pauseButton.class,
+            raket.class, enemy1.class, speedUp.class
+        );
     }
     
     public void stopped() {
