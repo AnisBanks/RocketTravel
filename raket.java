@@ -5,6 +5,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class raket extends Actor {  
     GreenfootSound speedSound    = (new GreenfootSound("speedSound.mp3"));
     GreenfootSound gameoverSound = (new GreenfootSound("gameoverSound.mp3"));
+    boolean shooting = false;
+    int timer = 0;
     public void gameOver() {
        //LAAT DE NIEUWE WERELD VERSCHIJNEN WAARIN JE DE GAME KAN RESTARTEN, EN JE SCORE KAN ZIEN
        enemy1.class.getClass();
@@ -15,7 +17,7 @@ public class raket extends Actor {
     int direction, speed;
 
     public void act() {
-    
+        timer++;
         if (Greenfoot.isKeyDown("up")) {
             move(s);   
         }       
@@ -39,7 +41,13 @@ public class raket extends Actor {
             Greenfoot.setWorld(new beginScherm());
         }
         
-     
+        //ATTACK
+        if (Greenfoot.isKeyDown("space") && shooting == false && timer > 20) {
+            getWorld().addObject(new Shot(getRotation()), getX(), getY());
+            shooting = true;
+            timer = 0;
+        }
+        else {shooting = false;}
          
     }   
     
